@@ -13,6 +13,10 @@ def sendmsg(msg, id):
     }
 
     r = requests.post(f"https://discord.com//api/v9/channels/{id}/messages", data=payload, headers=header)
+    if r.status_code == 401:
+        print("failed to send message")
+    else:
+        print(f"\"{msg}\" sent.")
 
 
 file = open("file.txt", "r")
